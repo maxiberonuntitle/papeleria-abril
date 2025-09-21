@@ -1,6 +1,9 @@
 import React, { useState} from 'react';
 import { MapPin, Phone, MessageCircle, Mail, Clock, Send, User, FileText, CheckCircle, MessageSquare, ArrowRight } from 'lucide-react';
 import { ScrollAnimate } from '../components/ScrollAnimate';
+import { BackButton } from '../components/BackButton';
+import { ScrollToTopButton } from '../components/ScrollToTopButton';
+import slider9 from '../assets/slider9.jpg';
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -43,39 +46,54 @@ export const Contact = () => {
   };
 
   return (
-    <div className="pt-20 pb-16 overflow-hidden">
+    <div 
+      className="pt-20 pb-16 overflow-hidden min-h-screen"
+      style={{
+        backgroundImage: `url(${slider9})`,
+        backgroundAttachment: 'fixed',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Overlay con gradiente para mejor legibilidad */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/40"></div>
+      
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-[#d15739] via-[#eb833e] to-[#d15739] overflow-hidden">
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute top-6 left-6 z-30">
+          <BackButton />
+        </div>
         {/* Elementos decorativos */}
         <div className="absolute inset-0 overflow-hidden">
           <ScrollAnimate animation="scale" delay={0.1}>
-            <div className="absolute top-10 left-10 w-16 h-16 bg-white/10 rounded-full animate-pulse" style={{ animationDelay: '0s' }} />
+            <div className="absolute top-10 left-10 w-16 h-16 bg-white/25 rounded-full animate-pulse" style={{ animationDelay: '0s' }} />
           </ScrollAnimate>
           <ScrollAnimate animation="scale" delay={0.2}>
-            <div className="absolute top-32 right-20 w-12 h-12 bg-white/5 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+            <div className="absolute top-32 right-20 w-12 h-12 bg-white/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
           </ScrollAnimate>
           <ScrollAnimate animation="scale" delay={0.3}>
-            <div className="absolute bottom-20 left-1/4 w-8 h-8 bg-white/15 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+            <div className="absolute bottom-20 left-1/4 w-8 h-8 bg-white/30 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
           </ScrollAnimate>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center text-white">
             <ScrollAnimate animation="up" delay={0.1}>
-              <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full mb-6 border border-white/30">
-                <MessageSquare size={20} />
-                <span className="text-sm font-medium">Estamos para ayudarte</span>
+              <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-md px-6 py-2 rounded-full mb-6 border border-white/50 shadow-lg">
+                <MessageSquare size={20} className="text-[#d15739]" />
+                <span className="text-sm font-medium text-gray-800">Estamos para ayudarte</span>
               </div>
             </ScrollAnimate>
             
             <ScrollAnimate animation="fade" delay={0.2}>
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in tracking-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 animate-fade-in tracking-tight">
                 Contáctanos
               </h1>
             </ScrollAnimate>
             
             <ScrollAnimate animation="fade" delay={0.3}>
-              <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in-delay">
+              <p className="text-lg md:text-xl lg:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in-delay">
                 Estamos acá para ayudarte. Contactanos por cualquiera de nuestros canales 
                 o completá el formulario de abajo.
               </p>
@@ -83,16 +101,16 @@ export const Contact = () => {
 
             <ScrollAnimate animation="fade" delay={0.4}>
               <div className="flex flex-wrap justify-center items-center gap-6 mb-10 animate-fade-in-delay">
-                <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-                  <Phone size={20} />
-                  <span className="text-sm">Atención personalizada</span>
+                <div className="flex items-center space-x-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-white/50">
+                  <Phone size={20} className="text-[#d15739]" />
+                  <span className="text-sm text-gray-800 font-medium">Atención personalizada</span>
                 </div>
-                <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-                  <Clock size={20} />
-                  <span className="text-sm">Respuesta rápida</span>
+                <div className="flex items-center space-x-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-white/50">
+                  <Clock size={20} className="text-[#d15739]" />
+                  <span className="text-sm text-gray-800 font-medium">Respuesta rápida</span>
                 </div>
-                <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-                  <span className="text-sm">Horarios flexibles</span>
+                <div className="flex items-center space-x-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-white/50">
+                  <span className="text-sm text-gray-800 font-medium">Horarios flexibles</span>
                 </div>
               </div>
             </ScrollAnimate>
@@ -101,8 +119,19 @@ export const Contact = () => {
       </section>
 
       {/* Contact Information and Form */}
-      <section className="py-20 bg-gradient-to-br from-orange-50 via-amber-50 to-orange-50">
-        <div className="container mx-auto px-4">
+      <section 
+        className="py-20 relative"
+        style={{
+          backgroundImage: `url(${slider9})`,
+          backgroundAttachment: 'fixed',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        {/* Overlay para mejor legibilidad */}
+        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
             {/* Contact Information */}
             <ScrollAnimate animation="left" delay={0.1}>
@@ -339,6 +368,7 @@ export const Contact = () => {
           </ScrollAnimate>
         </div>
       </section>
+      <ScrollToTopButton />
     </div>
   );
 };

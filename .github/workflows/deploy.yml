@@ -1,14 +1,8 @@
-name: Deploy to Azure Web App
+name: Deploy to Azure via FTP
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-env:
-  AZURE_WEBAPP_NAME: abrilpapeleria
-  AZURE_WEBAPP_PACKAGE_PATH: '.'
 
 jobs:
   build-and-deploy:
@@ -33,9 +27,11 @@ jobs:
     - name: Copy web.config
       run: cp public/web.config dist/
 
-    - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v3
+    - name: Deploy to Azure via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/dist
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./dist/
+        server-dir: /site/wwwroot/

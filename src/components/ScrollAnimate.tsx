@@ -3,7 +3,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 interface ScrollAnimateProps {
   children: React.ReactNode;
-  animation?: 'fade' | 'left' | 'right' | 'up' | 'scale' | 'rotate' | 'flip';
+  animation?: 'fade' | 'left' | 'right' | 'up' | 'scale' | 'rotate' | 'flip' | 'bounce' | 'slide' | 'zoom' | 'float';
   delay?: number;
   className?: string;
   threshold?: number;
@@ -37,6 +37,14 @@ export const ScrollAnimate: React.FC<ScrollAnimateProps> = ({
         return 'scroll-animate-rotate';
       case 'flip':
         return 'scroll-animate-flip';
+      case 'bounce':
+        return 'scroll-animate-bounce';
+      case 'slide':
+        return 'scroll-animate-slide';
+      case 'zoom':
+        return 'scroll-animate-zoom';
+      case 'float':
+        return 'scroll-animate-float';
       default:
         return 'scroll-animate';
     }

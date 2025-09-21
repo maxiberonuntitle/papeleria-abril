@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, MapPin, Phone, Clock, ChevronDown, Sparkles } from 'lucide-react';
+import { Menu, X, ChevronDown, Sparkles } from 'lucide-react';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [topBarVisible, setTopBarVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
 
   useEffect(() => {
@@ -17,17 +15,10 @@ export const Navbar = () => {
       } else {
         setScrolled(false);
       }
-      // Hide top bar only when scrolling down and past 100px
-      if (currentScrollY > 100 && currentScrollY > lastScrollY) {
-        setTopBarVisible(false);
-      } else {
-        setTopBarVisible(true);
-      }
-      setLastScrollY(currentScrollY);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -35,52 +26,36 @@ export const Navbar = () => {
 
   return (
     <header className="fixed top-0 w-full z-50 transition-all duration-500">
-      {/* Top Bar with Contact Info */}
-      <div className={`bg-gradient-to-r from-[#9c3c24] to-[#d15739] text-white transition-all duration-500 overflow-hidden backdrop-blur-sm ${
-        topBarVisible ? 'max-h-12 opacity-100' : 'max-h-0 opacity-0'
-      }`}>
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center h-12 text-sm">
-            <div className="hidden md:flex items-center space-x-6">
-              <div className="flex items-center group hover:scale-105 transition-transform duration-300">
-                <MapPin size={14} className="mr-2 group-hover:text-yellow-200 transition-colors" />
-                <span className="group-hover:text-yellow-200 transition-colors">Franco Segarra 340, Tacuarembó</span>
-              </div>
-              <div className="flex items-center group hover:scale-105 transition-transform duration-300">
-                <Phone size={14} className="mr-2 group-hover:text-yellow-200 transition-colors" />
-                <span className="group-hover:text-yellow-200 transition-colors">098 130 459 / 463 27828</span>
-              </div>
-            </div>
-            <div className="flex items-center group hover:scale-105 transition-transform duration-300">
-              <Clock size={14} className="mr-2 group-hover:text-yellow-200 transition-colors" />
-              <span className="group-hover:text-yellow-200 transition-colors">Lun-Vie: 8-20hs | Sáb: 8-17hs</span>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Main Navigation */}
       <nav className={`transition-all duration-500 backdrop-blur-md ${
         scrolled 
-          ? 'bg-white/95 text-[#d15739] shadow-xl py-3 border-b border-gray-100' 
-          : 'bg-gradient-to-r from-[#eb833e] to-[#d15739] text-white py-4'
+          ? 'bg-white/70 text-[#d15739] shadow-xl py-2 border-b border-gray-100/50' 
+          : 'bg-gradient-to-r from-[#eb833e]/90 to-[#d15739]/90 text-white py-4'
       }`}>
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
             {/* Logo */}
             <Link 
               to="/" 
-              className={`text-2xl md:text-3xl font-bold tracking-wider transition-all duration-500 group hover:scale-105 ${
-                scrolled ? 'text-[#d15739]' : 'text-white'
+              className={`font-bold tracking-wider transition-all duration-500 group hover:scale-105 ${
+                scrolled 
+                  ? 'text-[#d15739] text-lg md:text-xl' 
+                  : 'text-white text-2xl md:text-3xl'
               }`}
             >
               <div className="flex items-center">
-                <Sparkles size={24} className={`mr-2 group-hover:rotate-180 transition-transform duration-500 ${
-                  scrolled ? 'text-[#eb833e]' : 'text-yellow-200'
-                }`} />
+                <Sparkles 
+                  size={scrolled ? 20 : 24} 
+                  className={`mr-2 group-hover:rotate-180 transition-all duration-500 ${
+                    scrolled ? 'text-[#eb833e]' : 'text-yellow-200'
+                  }`} 
+                />
                 <span>Papelería Abril</span>
-                <span className={`ml-2 text-sm md:text-base italic font-dancing transition-all duration-500 ${
-                  scrolled ? 'text-[#eb833e]' : 'text-yellow-200'
+                <span className={`ml-2 italic font-dancing transition-all duration-500 ${
+                  scrolled 
+                    ? 'text-[#eb833e] text-xs md:text-sm' 
+                    : 'text-yellow-200 text-sm md:text-base'
                 }`}>
                   tacuarembó
                 </span>
@@ -89,15 +64,15 @@ export const Navbar = () => {
 
             {/* Mobile menu button */}
             <button 
-              className={`md:hidden transition-all duration-300 hover:scale-110 p-2 rounded-lg ${
+              className={`md:hidden transition-all duration-300 hover:scale-110 rounded-lg ${
                 scrolled 
-                  ? 'text-[#d15739] hover:bg-[#d15739]/10' 
-                  : 'text-white hover:bg-white/20'
+                  ? 'text-[#d15739] hover:bg-[#d15739]/10 p-1.5' 
+                  : 'text-white hover:bg-white/20 p-2'
               }`} 
               onClick={() => setIsOpen(!isOpen)} 
               aria-label="Toggle menu"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={scrolled ? 20 : 24} /> : <Menu size={scrolled ? 20 : 24} />}
             </button>
 
             {/* Desktop menu */}
@@ -157,28 +132,34 @@ const NavLink = ({
   return (
     <Link 
       to={to} 
-      className={`relative px-6 py-3 rounded-full font-medium transition-all duration-500 group overflow-hidden hover:scale-105 ${
+      className={`relative font-medium transition-all duration-500 group hover:scale-105 ${
+        scrolled 
+          ? 'px-4 py-2 text-sm' 
+          : 'px-6 py-3'
+      } ${
         isActive 
           ? scrolled 
-            ? 'text-white bg-gradient-to-r from-[#d15739] to-[#eb833e] shadow-lg' 
-            : 'text-[#d15739] bg-white shadow-lg' 
+            ? 'text-[#d15739]' 
+            : 'text-white' 
           : scrolled 
-            ? 'text-[#d15739] hover:text-[#9c3c24] hover:bg-[#d15739]/10' 
-            : 'text-white hover:text-yellow-200 hover:bg-white/20'
+            ? 'text-[#d15739] hover:text-[#9c3c24]' 
+            : 'text-white hover:text-yellow-200'
       }`}
     >
       <span className="relative z-10 flex items-center">
         {children}
       </span>
-      {!isActive && (
-        <div className={`absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
-          scrolled ? 'bg-[#d15739]' : 'bg-yellow-200'
+      {/* Línea naranja debajo para elemento activo */}
+      {isActive && (
+        <div className={`absolute bottom-0 left-0 w-full h-1 transition-all duration-300 ${
+          scrolled ? 'bg-[#d15739]' : 'bg-orange-400'
         }`} />
       )}
+      {/* Línea naranja debajo para hover en elementos no activos */}
       {!isActive && (
-        <span className={`absolute bottom-0 left-0 w-full h-0 ${
-          scrolled ? 'bg-[#d15739]/10' : 'bg-white/20'
-        } transition-all duration-300 group-hover:h-full -z-0`} />
+        <div className={`absolute bottom-0 left-0 w-0 h-1 transition-all duration-300 group-hover:w-full ${
+          scrolled ? 'bg-[#d15739]' : 'bg-orange-400'
+        }`} />
       )}
     </Link>
   );
@@ -201,18 +182,32 @@ const MobileNavLink = ({
   return (
     <Link 
       to={to} 
-      className={`block py-3 px-4 rounded-xl my-1 transition-all duration-300 hover:scale-105 ${
+      className={`relative block py-3 px-4 rounded-xl my-1 transition-all duration-300 hover:scale-105 group ${
         isActive 
           ? scrolled 
-            ? 'bg-gradient-to-r from-[#d15739] to-[#eb833e] text-white shadow-lg' 
-            : 'bg-white text-[#d15739] shadow-lg' 
+            ? 'text-[#d15739]' 
+            : 'text-white' 
           : scrolled 
-            ? 'text-[#d15739] hover:bg-[#d15739]/10' 
-            : 'text-white hover:bg-white/20'
+            ? 'text-[#d15739] hover:text-[#9c3c24]' 
+            : 'text-white hover:text-yellow-200'
       }`} 
       onClick={onClick}
     >
-      {children}
+      <span className="relative z-10">
+        {children}
+      </span>
+      {/* Línea naranja debajo para elemento activo */}
+      {isActive && (
+        <div className={`absolute bottom-1 left-4 right-4 h-1 transition-all duration-300 ${
+          scrolled ? 'bg-[#d15739]' : 'bg-orange-400'
+        }`} />
+      )}
+      {/* Línea naranja debajo para hover en elementos no activos */}
+      {!isActive && (
+        <div className={`absolute bottom-1 left-4 right-4 w-0 h-1 transition-all duration-300 group-hover:w-full ${
+          scrolled ? 'bg-[#d15739]' : 'bg-orange-400'
+        }`} />
+      )}
     </Link>
   );
 };

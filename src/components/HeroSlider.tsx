@@ -1,16 +1,17 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 
 interface HeroSliderProps {
   images: string[];
   interval?: number;
 }
 
-export const HeroSlider = ({ images, interval = 5000 }: HeroSliderProps) => {
+const HeroSlider = ({ images, interval = 5000 }: HeroSliderProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   // Efecto de parallax sutil
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
@@ -23,8 +24,6 @@ export const HeroSlider = ({ images, interval = 5000 }: HeroSliderProps) => {
 
   // Auto-avance de imágenes
   useEffect(() => {
-    if (isPaused) return;
-    
     const timer = setInterval(() => {
       setIsTransitioning(true);
       setTimeout(() => {
@@ -34,26 +33,49 @@ export const HeroSlider = ({ images, interval = 5000 }: HeroSliderProps) => {
     }, interval);
     
     return () => clearInterval(timer);
-  }, [images.length, interval, isPaused]);
+  }, [images.length, interval]);
 
-  // Ir a la anterior
-  const goToPrevious = () => {
+  // Funciones de navegación
+  const goToPrevious = useCallback(() => {
     if (isTransitioning) return;
     setIsTransitioning(true);
     setTimeout(() => {
       setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
       setIsTransitioning(false);
     }, 300);
-  };
+  }, [isTransitioning, images.length]);
 
-  // Ir a la siguiente
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     if (isTransitioning) return;
     setIsTransitioning(true);
     setTimeout(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
       setIsTransitioning(false);
     }, 300);
+  }, [isTransitioning, images.length]);
+
+  // Funciones de touch para swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      goToNext();
+    } else if (isRightSwipe) {
+      goToPrevious();
+    }
   };
 
   // Ir a imagen específica
@@ -68,9 +90,13 @@ export const HeroSlider = ({ images, interval = 5000 }: HeroSliderProps) => {
 
   return (
     <div 
-      className="relative h-[70vh] md:h-[80vh] lg:h-[85vh] xl:h-[90vh] overflow-hidden rounded-b-[40px] shadow-2xl group transition-all duration-700 hover:shadow-3xl"
+      ref={sliderRef}
+      className="relative h-[50vh] sm:h-[60vh] md:h-[80vh] lg:h-[85vh] overflow-hidden group transition-all duration-700"
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       {/* Imágenes con efectos mejorados y parallax muy sutil */}
       {images.map((image, index) => (
@@ -83,8 +109,8 @@ export const HeroSlider = ({ images, interval = 5000 }: HeroSliderProps) => {
           }`}
           style={{
             transform: index === currentIndex 
-              ? `scale(0.95) translate(${mousePosition.x * 2}px, ${mousePosition.y * 2}px)` 
-              : 'scale(0.95)'
+              ? `scale(1.05) translate(${mousePosition.x * 2}px, ${mousePosition.y * 2}px)` 
+              : 'scale(1.05)'
           }}
         >
           <img
@@ -92,70 +118,45 @@ export const HeroSlider = ({ images, interval = 5000 }: HeroSliderProps) => {
             alt={`Slide ${index + 1}`}
             className="w-full h-full object-cover object-center"
             loading={index <= 2 ? "eager" : "lazy"}
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
           />
-          {/* Overlay con gradiente mejorado */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
         </div>
       ))}
 
       {/* Contenido superpuesto con animación mejorada */}
-      <div className="absolute inset-0 z-20 flex items-center justify-center">
-        <div className="text-center text-white px-4 max-w-4xl">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 drop-shadow-2xl animate-fade-in tracking-wide">
-            Papelería Abril
-          </h1>
-          <p className="text-lg md:text-xl lg:text-2xl font-light drop-shadow-lg animate-fade-in-delay mb-6">
-            Tu papelería de confianza en Tacuarembó
-          </p>
-          <div className="animate-fade-in-delay">
-            <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full border border-white/30">
-              <span className="text-sm font-medium">Franco Segarra 340</span>
-              <span className="text-white/60">•</span>
-              <span className="text-sm">098 130 459</span>
+      <div className="absolute inset-0 z-20 flex items-end justify-center pb-8 sm:pb-12 md:pb-16">
+        <div className="text-center text-white max-w-4xl px-2 sm:px-4">
+          <div className="bg-black/30 backdrop-blur-sm px-2 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3 md:py-4 lg:py-6 rounded-xl sm:rounded-2xl border border-white/20 shadow-xl">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-light drop-shadow-lg animate-fade-in-delay mb-2 sm:mb-3 md:mb-4 lg:mb-6 max-w-2xl sm:max-w-3xl mx-auto leading-relaxed">
+              Tu destino de confianza para todos los útiles escolares, artículos de oficina y servicios de impresión en Tacuarembó
+            </p>
+            
+            <div className="animate-fade-in-delay">
+              <div className="flex flex-col sm:flex-row items-center justify-center space-y-1 sm:space-y-0 sm:space-x-3 bg-white/15 backdrop-blur-md px-2 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3 md:py-4 rounded-xl sm:rounded-2xl border border-white/25 shadow-xl">
+                <div className="flex items-center space-x-1 sm:space-x-2">
+                  <span className="text-xs sm:text-sm font-medium">📍 Franco Segarra 340</span>
+                </div>
+                <span className="text-white/60 hidden sm:inline">•</span>
+                <div className="flex items-center space-x-1 sm:space-x-2">
+                  <span className="text-xs sm:text-sm font-medium">📞 098 130 459</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Botones de navegación mejorados */}
-      <button
-        onClick={goToPrevious}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 z-30 hover:scale-110 border border-white/30 hover:shadow-lg cursor-pointer"
-        aria-label="Imagen anterior"
-        disabled={isTransitioning}
-      >
-        <ChevronLeft size={28} />
-      </button>
-
-      <button
-        onClick={goToNext}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 z-30 hover:scale-110 border border-white/30 hover:shadow-lg cursor-pointer"
-        aria-label="Imagen siguiente"
-        disabled={isTransitioning}
-      >
-        <ChevronRight size={28} />
-      </button>
-
-      {/* Botón de pausa/reproducción */}
-      <button
-        onClick={() => setIsPaused(!isPaused)}
-        className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 z-30 hover:scale-110 border border-white/30 hover:shadow-lg cursor-pointer"
-        aria-label={isPaused ? "Reproducir" : "Pausar"}
-      >
-        {isPaused ? <Play size={20} /> : <Pause size={20} />}
-      </button>
 
       {/* Indicadores mejorados */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-30">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-30">
         {images.map((_, index) => (
           <button
             key={index}
             onClick={() => goToImage(index)}
             className={`transition-all duration-300 hover:scale-125 cursor-pointer ${
               index === currentIndex 
-                ? 'bg-white w-8 h-2 rounded-full shadow-lg' 
-                : 'bg-white/50 w-2 h-2 rounded-full hover:bg-white/80'
+                ? 'bg-gradient-to-r from-[#d15739] to-[#eb833e] w-10 h-3 rounded-full shadow-lg border border-white/30' 
+                : 'bg-white/40 w-3 h-3 rounded-full hover:bg-white/70 border border-white/20'
             }`}
             aria-label={`Ir a imagen ${index + 1}`}
             disabled={isTransitioning}
@@ -164,12 +165,10 @@ export const HeroSlider = ({ images, interval = 5000 }: HeroSliderProps) => {
       </div>
 
       {/* Contador de imágenes */}
-      <div className="absolute bottom-4 right-4 bg-black/30 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium z-30 border border-white/20">
+      <div className="absolute bottom-6 right-6 bg-gradient-to-r from-[#d15739]/90 to-[#eb833e]/90 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-medium z-30 border border-white/20 shadow-lg">
         {currentIndex + 1} / {images.length}
       </div>
 
-      {/* Efecto de borde brillante en hover */}
-      <div className="absolute inset-0 border-2 border-transparent group-hover:border-white/20 rounded-b-[40px] transition-all duration-500 pointer-events-none" />
       
       {/* Efecto de partículas flotantes */}
       <div className="absolute inset-0 pointer-events-none">
@@ -180,3 +179,6 @@ export const HeroSlider = ({ images, interval = 5000 }: HeroSliderProps) => {
     </div>
   );
 };
+
+export { HeroSlider };
+export default HeroSlider;

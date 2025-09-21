@@ -8,8 +8,8 @@ interface UseScrollAnimationOptions {
 
 export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
   const {
-    threshold = 0.3,
-    rootMargin = '0px 0px -50px 0px',
+    threshold = 0.1,
+    rootMargin = '0px 0px -20px 0px',
     triggerOnce = true
   } = options;
 

@@ -2,6 +2,9 @@ import React from 'react';
 import { Printer, BookMarked, Copy, Smartphone, Image, Scan, FileText, FileBadge, CreditCard, Package, Award, ArrowRight, Clock } from 'lucide-react';
 import { ServiceCard } from '../components/ServiceCard';
 import { ScrollAnimate } from '../components/ScrollAnimate';
+import { BackButton } from '../components/BackButton';
+import { ScrollToTopButton } from '../components/ScrollToTopButton';
+import slider6 from '../assets/slider6.jpg';
 
 export const Services = () => {
   const services = [{
@@ -47,54 +50,69 @@ export const Services = () => {
   }];
 
   return (
-    <div className="pt-20 pb-16 overflow-hidden">
+    <div 
+      className="pt-20 pb-16 overflow-hidden min-h-screen"
+      style={{
+        backgroundImage: `url(${slider6})`,
+        backgroundAttachment: 'fixed',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Overlay con gradiente para mejor legibilidad */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/40"></div>
+      
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-[#d15739] via-[#eb833e] to-[#d15739] overflow-hidden">
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute top-6 left-6 z-30">
+          <BackButton />
+        </div>
         {/* Elementos decorativos */}
         <div className="absolute inset-0 overflow-hidden">
           <ScrollAnimate animation="scale" delay={0.1}>
-            <div className="absolute top-10 left-10 w-16 h-16 bg-white/10 rounded-full animate-pulse" style={{ animationDelay: '0s' }} />
+            <div className="absolute top-10 left-10 w-16 h-16 bg-white/25 rounded-full animate-pulse" style={{ animationDelay: '0s' }} />
           </ScrollAnimate>
           <ScrollAnimate animation="scale" delay={0.2}>
-            <div className="absolute top-32 right-20 w-12 h-12 bg-white/5 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+            <div className="absolute top-32 right-20 w-12 h-12 bg-white/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
           </ScrollAnimate>
           <ScrollAnimate animation="scale" delay={0.3}>
-            <div className="absolute bottom-20 left-1/4 w-8 h-8 bg-white/15 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+            <div className="absolute bottom-20 left-1/4 w-8 h-8 bg-white/30 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
           </ScrollAnimate>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center text-white">
             <ScrollAnimate animation="up" delay={0.1}>
-              <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full mb-6 border border-white/30">
-                <Award size={20} />
-                <span className="text-sm font-medium">Servicios para la Comunidad</span>
+              <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-md px-6 py-2 rounded-full mb-6 border border-white/50 shadow-lg">
+                <Award size={20} className="text-[#d15739]" />
+                <span className="text-sm font-medium text-gray-800">Servicios para la Comunidad</span>
               </div>
             </ScrollAnimate>
             
             <ScrollAnimate animation="fade" delay={0.2}>
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in tracking-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 animate-fade-in tracking-tight">
                 Nuestros Servicios
               </h1>
             </ScrollAnimate>
             
             <ScrollAnimate animation="fade" delay={0.3}>
-              <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in-delay">
+              <p className="text-lg md:text-xl lg:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in-delay">
                 Servicios básicos de impresión y encuadernación para ayudarte con tus proyectos
               </p>
             </ScrollAnimate>
 
             <ScrollAnimate animation="fade" delay={0.4}>
               <div className="flex flex-wrap justify-center items-center gap-6 mb-10 animate-fade-in-delay">
-                <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-                  <Clock size={20} />
-                  <span className="text-sm">Atención rápida</span>
+                <div className="flex items-center space-x-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-white/50">
+                  <Clock size={20} className="text-[#d15739]" />
+                  <span className="text-sm text-gray-800 font-medium">Atención rápida</span>
                 </div>
-                <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-                  <span className="text-sm">Precios accesibles</span>
+                <div className="flex items-center space-x-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-white/50">
+                  <span className="text-sm text-gray-800 font-medium">Precios accesibles</span>
                 </div>
-                <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-                  <span className="text-sm">Atención personalizada</span>
+                <div className="flex items-center space-x-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-white/50">
+                  <span className="text-sm text-gray-800 font-medium">Atención personalizada</span>
                 </div>
               </div>
             </ScrollAnimate>
@@ -103,20 +121,31 @@ export const Services = () => {
       </section>
 
       {/* Servicios Grid */}
-      <section className="py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-amber-50">
-        <div className="container mx-auto px-4">
+      <section 
+        className="py-20 relative"
+        style={{
+          backgroundImage: `url(${slider6})`,
+          backgroundAttachment: 'fixed',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        {/* Overlay para mejor legibilidad */}
+        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <ScrollAnimate animation="fade" delay={0.1}>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-[#d15739] mb-6 animate-fade-in">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#d15739] mb-6 animate-fade-in">
                 Te ayudamos con todo
               </h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in-delay">
+              <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in-delay">
                 Desde impresiones hasta encuadernaciones, tenemos los servicios que necesitás
               </p>
             </div>
           </ScrollAnimate>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
             {services.map((service, index) => (
               <ScrollAnimate 
                 key={index} 
@@ -202,6 +231,7 @@ export const Services = () => {
           </ScrollAnimate>
         </div>
       </section>
+      <ScrollToTopButton />
     </div>
   );
 };

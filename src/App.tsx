@@ -11,7 +11,12 @@ import { ScrollToTop } from './components/ScrollToTop.tsx'; // ✅ IMPORTACIÓN
 
 export function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true
+      }}
+    >
       <div className="flex flex-col min-h-screen">
         <ScrollToTop /> {/* ✅ COMPONENTE PARA FORZAR SCROLL ARRIBA */}
         <Navbar />
