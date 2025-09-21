@@ -173,16 +173,14 @@ export const Footer = () => {
               © {currentYear} Papelería Abril. Todos los derechos reservados.
             </p>
             <p className="text-center md:text-right flex items-center">
-              Desarrollado con{' '}
-              <Heart size={16} className="mx-1 text-red-400 animate-pulse" />
-              por{' '}
+              Developed by{' '}
               <a
-                href="https://www.linkedin.com/in/maxi-beron-laspiur/"
+                href="https://maxisoluciones.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-yellow-200 italic hover:underline font-medium hover:text-white transition-colors duration-300 ml-1"
               >
-                Maxi
+                Maxi Soluciones Digitales
               </a>
             </p>
           </div>
