@@ -20,17 +20,9 @@ export const Services = () => {
     title: 'Fotocopias',
     description: 'Servicio de fotocopias rápido y de alta calidad en diferentes tamaños.'
   }, {
-    icon: <Smartphone className="text-[#d15739]" size={48} />,
-    title: 'Recarga de Celulares',
-    description: 'Recarga de saldo para todas las compañías telefónicas del país.'
-  }, {
     icon: <Image className="text-[#d15739]" size={48} />,
     title: 'Impresión de Fotos y archivos digitales',
     description: 'Impresión de fotografías y archivos.'
-  }, {
-    icon: <Scan className="text-[#d15739]" size={48} />,
-    title: 'Escaneo de Documentos',
-    description: 'Digitalización de documentos físicos con envío por correo electrónico.'
   }, {
     icon: <FileText className="text-[#d15739]" size={48} />,
     title: 'Diseño de Documentos',

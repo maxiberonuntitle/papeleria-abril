@@ -13,7 +13,7 @@ import {
   Printer,
   BookMarked,
   Copy,
-  Smartphone,
+  FileText,
   MapPin,
   Phone,
   Mail,
@@ -54,6 +54,8 @@ export const Home = () => {
           backgroundRepeat: 'no-repeat'
         }}
       >
+        {/* Overlay de color para bienvenida */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black/15 to-black/25"></div>
         
         {/* Elementos decorativos flotantes optimizados */}
         <div className="absolute inset-0 overflow-hidden">
@@ -123,13 +125,15 @@ export const Home = () => {
         id="productos" 
         className="relative py-20"
         style={{
-          backgroundImage: `url(${slider5})`,
+          backgroundImage: `url(${slider2})`,
           backgroundAttachment: 'fixed',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
         }}
       >
+        {/* Overlay de color para productos */}
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-amber-500/15 to-orange-600/20"></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
@@ -191,15 +195,15 @@ export const Home = () => {
         id="servicios"
         className="relative py-20 overflow-hidden"
         style={{
-          backgroundImage: `url(${slider8})`,
+          backgroundImage: `url(${slider2})`,
           backgroundAttachment: 'fixed',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
         }}
       >
-        {/* Overlay con gradiente */}
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-50/50 via-orange-50/50 to-amber-50/50"></div>
+        {/* Overlay de color para servicios */}
+        <div className="absolute inset-0 bg-gradient-to-br from-pink-500/25 via-rose-400/20 to-pink-600/25"></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <ScrollAnimate animation="fade" delay={0.3}>
@@ -243,9 +247,9 @@ export const Home = () => {
             <ScrollAnimate animation="right" delay={1.1}>
               <div className="group hover-lift">
                 <ServiceCard
-                  icon={<Smartphone className="text-[#d15739] group-hover:scale-110 transition-transform duration-300" size={48} />}
-                  title="Recarga de Celulares"
-                  description="Recarga de saldo para todas las compañías telefónicas."
+                  icon={<FileText className="text-[#d15739] group-hover:scale-110 transition-transform duration-300" size={48} />}
+                  title="Diseño de Documentos"
+                  description="Asistencia en el diseño y formato de documentos personales o empresariales."
                 />
               </div>
             </ScrollAnimate>
@@ -269,13 +273,15 @@ export const Home = () => {
       <section 
         className="py-20"
         style={{
-          backgroundImage: `url(${slider12})`,
+          backgroundImage: `url(${slider2})`,
           backgroundAttachment: 'fixed',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
         }}
       >
+        {/* Overlay de color para mapa */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/15 via-indigo-500/10 to-blue-600/15"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
             <div className="bg-white/60 backdrop-blur-md px-8 py-6 rounded-2xl border border-white/30 shadow-xl mb-8">
