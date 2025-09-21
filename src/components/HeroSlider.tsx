@@ -123,8 +123,8 @@ const HeroSlider = ({ images, interval = 5000 }: HeroSliderProps) => {
         </div>
       ))}
 
-      {/* Contenido superpuesto con animación mejorada */}
-      <div className="absolute inset-0 z-20 flex items-end justify-center pb-8 sm:pb-12 md:pb-16">
+      {/* Contenido superpuesto con animación mejorada - Solo visible en desktop */}
+      <div className="absolute inset-0 z-20 flex items-end justify-center pb-8 sm:pb-12 md:pb-16 hidden sm:flex">
         <div className="text-center text-white max-w-4xl px-2 sm:px-4">
           <div className="bg-black/30 backdrop-blur-sm px-2 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3 md:py-4 lg:py-6 rounded-xl sm:rounded-2xl border border-white/20 shadow-xl">
             <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-light drop-shadow-lg animate-fade-in-delay mb-2 sm:mb-3 md:mb-4 lg:mb-6 max-w-2xl sm:max-w-3xl mx-auto leading-relaxed">

@@ -132,7 +132,7 @@ export const Services = () => {
         }}
       >
         {/* Overlay para mejor legibilidad */}
-        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-white/60 backdrop-blur-sm"></div>
         <div className="container mx-auto px-4 relative z-10">
           <ScrollAnimate animation="fade" delay={0.1}>
             <div className="text-center mb-16">
@@ -168,7 +168,7 @@ export const Services = () => {
           <ScrollAnimate animation="fade" delay={0.5}>
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
               <ScrollAnimate animation="left" delay={0.6}>
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 text-center hover-lift border border-orange-100">
+                <div className="bg-white/60 backdrop-blur-sm rounded-xl shadow-lg p-6 text-center hover-lift border border-orange-100">
                   <div className="bg-[#d15739]/10 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                     <Clock size={24} className="text-[#d15739]" />
                   </div>
@@ -178,7 +178,7 @@ export const Services = () => {
               </ScrollAnimate>
               
               <ScrollAnimate animation="fade" delay={0.7}>
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 text-center hover-lift border border-orange-100">
+                <div className="bg-white/60 backdrop-blur-sm rounded-xl shadow-lg p-6 text-center hover-lift border border-orange-100">
                   <div className="bg-[#d15739]/10 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                     <CreditCard size={24} className="text-[#d15739]" />
                   </div>
@@ -188,7 +188,7 @@ export const Services = () => {
               </ScrollAnimate>
               
               <ScrollAnimate animation="right" delay={0.8}>
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 text-center hover-lift border border-orange-100">
+                <div className="bg-white/60 backdrop-blur-sm rounded-xl shadow-lg p-6 text-center hover-lift border border-orange-100">
                   <div className="bg-[#d15739]/10 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                     <Smartphone size={24} className="text-[#d15739]" />
                   </div>
@@ -202,7 +202,7 @@ export const Services = () => {
           {/* Call to Action */}
           <ScrollAnimate animation="up" delay={0.9}>
             <div className="text-center mt-16">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8 max-w-2xl mx-auto border border-orange-100">
+              <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg p-8 max-w-2xl mx-auto border border-orange-100">
                 <h3 className="text-2xl font-bold text-[#d15739] mb-4">
                   ¿Necesitás algo específico?
                 </h3>

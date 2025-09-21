@@ -130,12 +130,12 @@ export const Contact = () => {
         }}
       >
         {/* Overlay para mejor legibilidad */}
-        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-white/60 backdrop-blur-sm"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
             {/* Contact Information */}
             <ScrollAnimate animation="left" delay={0.1}>
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8 transform transition-all hover:shadow-xl hover-lift border border-orange-100">
+              <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg p-8 transform transition-all hover:shadow-xl hover-lift border border-orange-100">
                 <h2 className="text-3xl font-bold text-[#d15739] mb-8">
                   Información de Contacto
                 </h2>
@@ -206,7 +206,7 @@ export const Contact = () => {
 
             {/* Contact Form */}
             <ScrollAnimate animation="right" delay={0.2}>
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8 transform transition-all hover:shadow-xl hover-lift border border-orange-100">
+              <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg p-8 transform transition-all hover:shadow-xl hover-lift border border-orange-100">
                 <h2 className="text-3xl font-bold text-[#d15739] mb-8">
                   Envianos un Mensaje
                 </h2>
@@ -356,7 +356,7 @@ export const Contact = () => {
               <h2 className="text-3xl font-bold text-[#d15739] mb-8">
                 Nuestra Ubicación
               </h2>
-              <div className="aspect-video w-full rounded-xl overflow-hidden shadow-lg">
+              <div className="aspect-video w-full md:w-1/2 mx-auto rounded-xl overflow-hidden shadow-lg">
                 <iframe 
                   className="w-full h-full" 
                   src="https://www.google.com/maps?q=Franco+Segarra+340,+Tacuarembó,+Uruguay&output=embed" 

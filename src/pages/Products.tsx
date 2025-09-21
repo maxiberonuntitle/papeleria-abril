@@ -135,7 +135,7 @@ export const Products = () => {
         }}
       >
         {/* Overlay para mejor legibilidad */}
-        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-white/60 backdrop-blur-sm"></div>
         <div className="container mx-auto px-4 relative z-10">
           <ScrollAnimate animation="fade" delay={0.1}>
             <div className="text-center mb-16">
@@ -170,7 +170,7 @@ export const Products = () => {
           {/* Call to Action */}
           <ScrollAnimate animation="up" delay={0.5}>
             <div className="text-center mt-16">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8 max-w-2xl mx-auto border border-orange-100">
+              <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg p-8 max-w-2xl mx-auto border border-orange-100">
                 <h3 className="text-2xl font-bold text-[#d15739] mb-4">
                   ¿No encontrás lo que buscás?
                 </h3>

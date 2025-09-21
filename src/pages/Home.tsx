@@ -133,7 +133,7 @@ export const Home = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <div className="bg-white/80 backdrop-blur-md px-8 py-6 rounded-2xl border border-white/50 shadow-xl mb-8">
+            <div className="bg-white/60 backdrop-blur-md px-8 py-6 rounded-2xl border border-white/30 shadow-xl mb-8">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#d15739] mb-6">
                 Nuestros Productos
               </h2>
@@ -204,7 +204,7 @@ export const Home = () => {
         <div className="container mx-auto px-4 relative z-10">
           <ScrollAnimate animation="fade" delay={0.3}>
             <div className="text-center mb-16">
-              <div className="bg-white/80 backdrop-blur-md px-8 py-6 rounded-2xl border border-white/50 shadow-xl">
+              <div className="bg-white/60 backdrop-blur-md px-8 py-6 rounded-2xl border border-white/30 shadow-xl">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#d15739] mb-6 animate-fade-in">
                   Nuestros Servicios
                 </h2>
@@ -278,7 +278,7 @@ export const Home = () => {
       >
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
-            <div className="bg-white/80 backdrop-blur-md px-8 py-6 rounded-2xl border border-white/50 shadow-xl mb-8">
+            <div className="bg-white/60 backdrop-blur-md px-8 py-6 rounded-2xl border border-white/30 shadow-xl mb-8">
               <h2 className="text-4xl md:text-5xl font-bold text-[#d15739] mb-6">
                 Nuestra Ubicación
               </h2>
@@ -289,8 +289,8 @@ export const Home = () => {
             </div>
           </div>
           
-          <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-500 border border-white/50">
-            <div className="aspect-video w-full rounded-xl overflow-hidden shadow-lg">
+          <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-500 border border-white/30">
+            <div className="aspect-video w-full md:w-1/2 mx-auto rounded-xl overflow-hidden shadow-lg">
               <iframe 
                 className="w-full h-full" 
                 src="https://www.google.com/maps?q=Franco+Segarra+340,+Tacuarembó,+Uruguay&output=embed" 

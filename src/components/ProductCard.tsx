@@ -17,7 +17,7 @@ export const ProductCard = ({
 }: ProductCardProps) => {
   return (
     <Link to="/productos" className="block group">
-      <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-[#d15739]/20 transform transition-all duration-300 hover:-translate-y-3 hover:scale-105 p-2 sm:p-4 md:p-8 h-full border border-white/50 hover:border-[#d15739]/30 relative overflow-hidden">
+      <div className="bg-white/60 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-[#d15739]/20 transform transition-all duration-300 hover:-translate-y-3 hover:scale-105 p-2 sm:p-4 md:p-8 h-full border border-white/30 hover:border-[#d15739]/30 relative overflow-hidden">
         {/* Efecto de fondo sutil */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#d15739]/5 via-transparent to-[#eb833e]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         
