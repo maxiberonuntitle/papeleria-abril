@@ -54,6 +54,13 @@ export const Home = () => {
           backgroundRepeat: 'no-repeat'
         }}
       >
+        {/* Fondo fijo para móviles */}
+        <div 
+          className="fixed inset-0 w-full h-full fixed-bg-mobile"
+          style={{
+            backgroundImage: `url(${slider2})`,
+          }}
+        ></div>
         {/* Overlay de color para bienvenida */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black/15 to-black/25"></div>
         
@@ -132,6 +139,13 @@ export const Home = () => {
           backgroundRepeat: 'no-repeat'
         }}
       >
+        {/* Fondo fijo para móviles */}
+        <div 
+          className="fixed inset-0 w-full h-full fixed-bg-mobile"
+          style={{
+            backgroundImage: `url(${slider2})`,
+          }}
+        ></div>
         {/* Overlay de color para productos */}
         <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-amber-500/15 to-orange-600/20"></div>
         
@@ -202,6 +216,13 @@ export const Home = () => {
           backgroundRepeat: 'no-repeat'
         }}
       >
+        {/* Fondo fijo para móviles */}
+        <div 
+          className="fixed inset-0 w-full h-full fixed-bg-mobile"
+          style={{
+            backgroundImage: `url(${slider2})`,
+          }}
+        ></div>
         {/* Overlay de color para servicios */}
         <div className="absolute inset-0 bg-gradient-to-br from-pink-500/25 via-rose-400/20 to-pink-600/25"></div>
         
@@ -280,6 +301,13 @@ export const Home = () => {
           backgroundRepeat: 'no-repeat'
         }}
       >
+        {/* Fondo fijo para móviles */}
+        <div 
+          className="fixed inset-0 w-full h-full fixed-bg-mobile"
+          style={{
+            backgroundImage: `url(${slider2})`,
+          }}
+        ></div>
         {/* Overlay de color para mapa */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/15 via-indigo-500/10 to-blue-600/15"></div>
         <div className="container mx-auto px-4 relative z-10">
