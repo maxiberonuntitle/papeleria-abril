@@ -45,24 +45,21 @@ export const Home = () => {
 
       {/* Sección de Bienvenida con Efectos */}
       <section 
-        className="relative py-12 sm:py-16 md:py-20 overflow-hidden"
+        className="relative py-12 sm:py-16 md:py-20 overflow-hidden bg-cover bg-center bg-no-repeat md:bg-fixed"
         style={{
           backgroundImage: `url(${slider2})`,
-          backgroundAttachment: 'fixed',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
         }}
       >
         {/* Fondo fijo para móviles */}
         <div 
-          className="fixed inset-0 w-full h-full fixed-bg-mobile"
+          className="md:hidden fixed inset-0 w-full h-full fixed-bg-mobile"
           style={{
             backgroundImage: `url(${slider2})`,
+            zIndex: 0
           }}
         ></div>
         {/* Overlay de color para bienvenida */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black/15 to-black/25"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-black/35 via-black/30 to-black/40" style={{ zIndex: 1 }}></div>
         
         {/* Elementos decorativos flotantes optimizados */}
         <div className="absolute inset-0 overflow-hidden">
@@ -130,24 +127,21 @@ export const Home = () => {
       {/* Productos Section con Efectos Modernos */}
       <section 
         id="productos" 
-        className="relative py-20"
+        className="relative py-20 bg-cover bg-center bg-no-repeat md:bg-fixed"
         style={{
-          backgroundImage: `url(${slider2})`,
-          backgroundAttachment: 'fixed',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
+          backgroundImage: `url(${slider5})`,
         }}
       >
         {/* Fondo fijo para móviles */}
         <div 
-          className="fixed inset-0 w-full h-full fixed-bg-mobile"
+          className="md:hidden fixed inset-0 w-full h-full fixed-bg-mobile"
           style={{
             backgroundImage: `url(${slider2})`,
+            zIndex: 0
           }}
         ></div>
         {/* Overlay de color para productos */}
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-amber-500/15 to-orange-600/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/60 via-amber-500/55 to-orange-600/60 md:from-orange-500/40 md:via-amber-500/35 md:to-orange-600/40" style={{ zIndex: 1 }}></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
@@ -207,24 +201,21 @@ export const Home = () => {
       {/* Servicios Section con Diseño Moderno */}
       <section
         id="servicios"
-        className="relative py-20 overflow-hidden"
+        className="relative py-20 overflow-hidden bg-cover bg-center bg-no-repeat md:bg-fixed"
         style={{
-          backgroundImage: `url(${slider2})`,
-          backgroundAttachment: 'fixed',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
+          backgroundImage: `url(${slider8})`,
         }}
       >
         {/* Fondo fijo para móviles */}
         <div 
-          className="fixed inset-0 w-full h-full fixed-bg-mobile"
+          className="md:hidden fixed inset-0 w-full h-full fixed-bg-mobile"
           style={{
             backgroundImage: `url(${slider2})`,
+            zIndex: 0
           }}
         ></div>
         {/* Overlay de color para servicios */}
-        <div className="absolute inset-0 bg-gradient-to-br from-pink-500/25 via-rose-400/20 to-pink-600/25"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/65 via-violet-500/60 to-indigo-600/65 md:from-purple-600/45 md:via-violet-500/40 md:to-indigo-600/45" style={{ zIndex: 1 }}></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <ScrollAnimate animation="fade" delay={0.3}>
@@ -292,24 +283,21 @@ export const Home = () => {
 
       {/* Map Section */}
       <section 
-        className="py-20"
+        className="relative py-20 bg-cover bg-center bg-no-repeat md:bg-fixed"
         style={{
-          backgroundImage: `url(${slider2})`,
-          backgroundAttachment: 'fixed',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
+          backgroundImage: `url(${slider12})`,
         }}
       >
         {/* Fondo fijo para móviles */}
         <div 
-          className="fixed inset-0 w-full h-full fixed-bg-mobile"
+          className="md:hidden fixed inset-0 w-full h-full fixed-bg-mobile"
           style={{
             backgroundImage: `url(${slider2})`,
+            zIndex: 0
           }}
         ></div>
         {/* Overlay de color para mapa */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/15 via-indigo-500/10 to-blue-600/15"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/35 via-indigo-500/30 to-blue-600/35" style={{ zIndex: 1 }}></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
             <div className="bg-white/60 backdrop-blur-md px-8 py-6 rounded-2xl border border-white/30 shadow-xl mb-8">

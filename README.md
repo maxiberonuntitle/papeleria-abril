@@ -1,4 +1,4 @@
-Public URL: https://abrilpapeleria.azurewebsites.net/
+Public URL: https://abrilpapeleria.com/
 ## Getting Started
 
 1. Run `npm install`
