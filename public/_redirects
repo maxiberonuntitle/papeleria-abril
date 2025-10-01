@@ -1,0 +1,6 @@
+# Excepciones para archivos SEO
+/sitemap.xml    /sitemap.xml   200
+/robots.txt     /robots.txt    200
+
+# Redireccionamiento para React Router
+/*    /index.html   200

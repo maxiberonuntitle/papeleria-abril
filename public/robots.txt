@@ -1,0 +1,12 @@
+# robots.txt para Papelería Abril - Tacuarembó, Uruguay
+User-agent: *
+Allow: /
+Sitemap: https://abrilpapeleria.com/sitemap.xml
+
+# Optimización para buscadores locales
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
