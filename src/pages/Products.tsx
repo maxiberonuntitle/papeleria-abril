@@ -77,6 +77,18 @@ export const Products = () => {
           }))
         })}
       </script>
+
+      {/* JSON-LD: BreadcrumbList para Productos */}
+      <script type="application/ld+json" suppressHydrationWarning>
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://abrilpapeleria.com/' },
+            { '@type': 'ListItem', position: 2, name: 'Productos', item: 'https://abrilpapeleria.com/productos' }
+          ]
+        })}
+      </script>
       {/* Overlay con gradiente para mejor legibilidad */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/40"></div>
       

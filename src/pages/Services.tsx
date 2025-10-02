@@ -52,6 +52,30 @@ export const Services = () => {
         backgroundRepeat: 'no-repeat'
       }}
     >
+      {/* JSON-LD: Services como ItemList y Breadcrumbs */}
+      <script type="application/ld+json" suppressHydrationWarning>
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          name: 'Listado de servicios',
+          itemListElement: services.map((s, idx) => ({
+            '@type': 'ListItem',
+            position: idx + 1,
+            name: s.title,
+            url: 'https://abrilpapeleria.com/servicios'
+          }))
+        })}
+      </script>
+      <script type="application/ld+json" suppressHydrationWarning>
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://abrilpapeleria.com/' },
+            { '@type': 'ListItem', position: 2, name: 'Servicios', item: 'https://abrilpapeleria.com/servicios' }
+          ]
+        })}
+      </script>
       {/* Overlay con gradiente para mejor legibilidad */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/40"></div>
       

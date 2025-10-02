@@ -139,6 +139,22 @@
       }
     }
     </script>
+
+    <!-- Schema.org Structured Data for WebSite + SearchAction -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Papelería Abril",
+      "url": "https://abrilpapeleria.com/",
+      "inLanguage": "es-UY",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://abrilpapeleria.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

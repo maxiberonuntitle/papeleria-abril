@@ -52,6 +52,17 @@ export const Home = () => {
           ]
         })}
       </script>
+
+      {/* JSON-LD: BreadcrumbList para Home */}
+      <script type="application/ld+json" suppressHydrationWarning>
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://abrilpapeleria.com/' }
+          ]
+        })}
+      </script>
       {/* Hero Slider */}
       <div className="pt-16">
         <HeroSlider images={sliderImages} />
