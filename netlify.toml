@@ -7,6 +7,25 @@
   # Directorio donde se generan los archivos de producción
   publish = "dist"
 
+# Forzar HTTPS y dominio canónico (sin www)
+[[redirects]]
+  from = "http://abrilpapeleria.com/*"
+  to = "https://abrilpapeleria.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.abrilpapeleria.com/*"
+  to = "https://abrilpapeleria.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.abrilpapeleria.com/*"
+  to = "https://abrilpapeleria.com/:splat"
+  status = 301
+  force = true
+
 # Configuración para manejar las rutas de React Router (SPA)
 # Excepciones para archivos SEO
 [[redirects]]
@@ -32,6 +51,7 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
 
 # Cache para assets estáticos (imágenes, CSS, JS)
 [[headers]]
