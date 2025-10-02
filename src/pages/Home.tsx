@@ -38,6 +38,20 @@ import slider12 from '../assets/slider12.jpg';
 export const Home = () => {
   return (
     <div className="overflow-hidden">
+      {/* JSON-LD: ItemList de categorías destacadas */}
+      <script type="application/ld+json" suppressHydrationWarning>
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          name: 'Categorías destacadas',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Cuadernos', url: 'https://abrilpapeleria.com/productos' },
+            { '@type': 'ListItem', position: 2, name: 'Útiles Escolares', url: 'https://abrilpapeleria.com/productos' },
+            { '@type': 'ListItem', position: 3, name: 'Artículos de Oficina', url: 'https://abrilpapeleria.com/productos' },
+            { '@type': 'ListItem', position: 4, name: 'Mochilas y Regalos', url: 'https://abrilpapeleria.com/productos' }
+          ]
+        })}
+      </script>
       {/* Hero Slider */}
       <div className="pt-16">
         <HeroSlider images={sliderImages} />

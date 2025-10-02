@@ -63,6 +63,20 @@ export const Products = () => {
         backgroundRepeat: 'no-repeat'
       }}
     >
+      {/* JSON-LD: ItemList de categorías del catálogo */}
+      <script type="application/ld+json" suppressHydrationWarning>
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          name: 'Catálogo de categorías',
+          itemListElement: products.map((p, idx) => ({
+            '@type': 'ListItem',
+            position: idx + 1,
+            name: p.title,
+            url: 'https://abrilpapeleria.com/productos'
+          }))
+        })}
+      </script>
       {/* Overlay con gradiente para mejor legibilidad */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/40"></div>
       
